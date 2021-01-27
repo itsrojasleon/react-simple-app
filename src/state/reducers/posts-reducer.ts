@@ -12,30 +12,36 @@ interface PostsState {
   loading: boolean;
   error: string | null;
   posts: Post[];
+  post: Post | null;
 }
 
+const initialState = { loading: false, error: null, posts: [], post: null };
+
 const postsReducer = (
-  state: PostsState = { loading: false, error: null, posts: [] },
+  state: PostsState = initialState,
   action: Action
 ): PostsState => {
   switch (action.type) {
     case PostsActionTypes.FETCH_POSTS:
-      return { loading: true, error: null, posts: [] };
+      return { ...state, loading: true, error: null, posts: [] };
     case PostsActionTypes.FETCH_POSTS_SUCCESS:
-      return { loading: false, error: null, posts: action.payload };
-    case PostsActionTypes.FETCH_POSTS_ERROR:
-      return { loading: false, error: action.payload, posts: [] };
-
-    case PostsActionTypes.FETCH_MORE_POSTS:
-      return { loading: true, error: null, posts: state.posts };
-    case PostsActionTypes.FETCH_MORE_POSTS_SUCCESS:
       return {
-        loading: true,
+        ...state,
+        loading: false,
         error: null,
         posts: [...state.posts, ...action.payload],
       };
-    case PostsActionTypes.FETCH_MORE_POSTS_ERROR:
-      return { loading: false, error: action.payload, posts: [] };
+    case PostsActionTypes.FETCH_POSTS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        posts: [],
+        post: null,
+      };
+    // single post
+    case PostsActionTypes.FETCH_POST_SUCCESS:
+      return { ...state, loading: false, error: null, post: action.payload };
     default:
       return state;
   }

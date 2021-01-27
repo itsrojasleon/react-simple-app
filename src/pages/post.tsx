@@ -1,16 +1,16 @@
-import {useEffect} from 'react';
-import {useParams} from 'react-router-dom';
-import {useActions} from '../hooks/use-actions';
-import {useTypedSelector} from '../hooks/use-typed-selector';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useActions } from '../hooks/use-actions';
+import { useTypedSelector } from '../hooks/use-typed-selector';
 import PostsDetails from '../components/posts-details';
 
 const Post: React.FC = () => {
-  const {fetchPost} = useActions();
-  const {post, error, loading} = useTypedSelector((state) => state.post);
-  const {postId} = useParams<{postId: string}>();
+  const { fetchPost } = useActions();
+  const { post, error, loading } = useTypedSelector((state) => state.posts);
+  const { postId } = useParams<{ postId: string }>();
 
   useEffect(() => {
-    fetchPost({id: parseInt(postId)});
+    fetchPost({ id: parseInt(postId) });
   }, []);
 
   if (loading) return <h3>Loading...</h3>;
