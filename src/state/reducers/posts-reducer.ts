@@ -1,11 +1,20 @@
 import { PostsActionTypes } from '../action-types';
 import { Action } from '../actions';
 
+export interface Comment {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}
+
 export interface Post {
   userId: number;
   id: number;
   title: string;
   body: string;
+  comments?: Comment[];
 }
 
 interface PostsState {
@@ -41,7 +50,15 @@ const postsReducer = (
       };
     // single post
     case PostsActionTypes.FETCH_POST_SUCCESS:
-      return { ...state, loading: false, error: null, post: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        post: {
+          ...action.payload.post,
+          comments: action.payload.comments,
+        },
+      };
     default:
       return state;
   }

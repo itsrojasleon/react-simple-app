@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useActions } from '../hooks/use-actions';
 import PostsList from '../components/posts-list';
+import Button from '../components/button';
 
 const Posts: React.FC = () => {
   const { fetchPosts } = useActions();
@@ -11,12 +12,12 @@ const Posts: React.FC = () => {
   }, [page]);
 
   return (
-    <div>
+    <>
       <PostsList />
-      <button onClick={() => setPage((prevPage) => prevPage + 1)}>
+      <Button onClick={() => setPage((prevPage) => prevPage + 1)}>
         Load more
-      </button>
-    </div>
+      </Button>
+    </>
   );
 };
 

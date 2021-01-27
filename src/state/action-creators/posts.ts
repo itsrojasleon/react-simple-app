@@ -27,9 +27,15 @@ const fetchPost = ({ id }: { id: number }) => {
     dispatch({ type: PostsActionTypes.FETCH_POSTS });
 
     try {
-      const payload = await Api.getSinglePost({ id });
+      const [post, comments] = await Promise.all([
+        Api.getSinglePost({ id }),
+        Api.getPostComments({ id }),
+      ]);
 
-      dispatch({ type: PostsActionTypes.FETCH_POST_SUCCESS, payload });
+      dispatch({
+        type: PostsActionTypes.FETCH_POST_SUCCESS,
+        payload: { post, comments },
+      });
     } catch (err) {
       dispatch({
         type: PostsActionTypes.FETCH_POSTS_ERROR,

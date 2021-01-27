@@ -1,5 +1,5 @@
 import { PostsActionTypes } from '../action-types';
-import { Post } from '../reducers/posts-reducer';
+import { Post, Comment } from '../reducers/posts-reducer';
 
 interface FetchPostsAction {
   type: PostsActionTypes.FETCH_POSTS;
@@ -22,7 +22,7 @@ interface FetchPostsErrorAction {
 
 interface FetchPostSuccessAction {
   type: PostsActionTypes.FETCH_POST_SUCCESS;
-  payload: Post;
+  payload: { post: Post; comments: Comment[] };
 }
 
 // interface FetchPostErrorAction {

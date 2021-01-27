@@ -5,22 +5,20 @@ const URL = axios.create({
 });
 
 export class Api {
-  static async getPosts({page = 1}: {page: number}) {
-    const {data} = await URL.get(`/posts?_page=${page}`);
+  static async getPosts({ page = 1 }: { page: number }) {
+    const { data } = await URL.get(`/posts?_page=${page}`);
 
     return data;
   }
 
-  static async getSinglePost({id}: {id: number}) {
-    const {data} = await URL.get('/posts', {
-      params: {id},
-    });
+  static async getSinglePost({ id }: { id: number }) {
+    const { data } = await URL.get(`/posts/${id}`);
 
-    return data[0];
+    return data;
   }
 
-  static async getPostComments({id}: {id: number}) {
-    const {data} = await URL.get(`/posts/${id}/comments`);
+  static async getPostComments({ id }: { id: number }) {
+    const { data } = await URL.get(`/posts/${id}/comments`);
 
     return data;
   }
