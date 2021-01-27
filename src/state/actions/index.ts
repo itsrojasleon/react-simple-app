@@ -15,6 +15,22 @@ interface FetchPostsErrorAction {
   payload: string;
 }
 
+// second
+interface FetchMorePostsAction {
+  type: PostsActionTypes.FETCH_MORE_POSTS;
+}
+
+interface FetchMorePostsSuccessAction {
+  type: PostsActionTypes.FETCH_MORE_POSTS_SUCCESS;
+  payload: Post[];
+}
+
+interface FetchMorePostsErrorAction {
+  type: PostsActionTypes.FETCH_MORE_POSTS_ERROR;
+  payload: string;
+}
+
+// Third
 interface FetchPostAction {
   type: PostsActionTypes.FETCH_POST;
 }
@@ -33,6 +49,9 @@ export type Action =
   | FetchPostsAction
   | FetchPostsSuccessAction
   | FetchPostsErrorAction
+  | FetchMorePostsAction
+  | FetchMorePostsSuccessAction
+  | FetchMorePostsErrorAction
   | FetchPostAction
   | FetchPostSuccessAction
   | FetchPostErrorAction;

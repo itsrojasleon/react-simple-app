@@ -5,10 +5,8 @@ const URL = axios.create({
 });
 
 export class Api {
-  static async getPosts({_page = 1}: {_page: number}) {
-    const {data} = await URL.get('/posts', {
-      params: {_page},
-    });
+  static async getPosts({page = 1}: {page: number}) {
+    const {data} = await URL.get(`/posts?_page=${page}`);
 
     return data;
   }
