@@ -5,12 +5,12 @@ interface FetchPostsAction {
   type: PostsActionTypes.FETCH_POSTS;
 }
 
-interface SearchPostsSuccessAction {
+interface FetchPostsSuccessAction {
   type: PostsActionTypes.FETCH_POSTS_SUCCESS;
   payload: Post[];
 }
 
-interface SearchPostsErrorAction {
+interface FetchPostsErrorAction {
   type: PostsActionTypes.FETCH_POSTS_ERROR;
   payload: string;
 }
@@ -19,20 +19,20 @@ interface FetchPostAction {
   type: PostsActionTypes.FETCH_POST;
 }
 
-interface SearchPostSuccessAction {
+interface FetchPostSuccessAction {
   type: PostsActionTypes.FETCH_POST_SUCCESS;
-  payload: Post[];
+  payload: Post;
 }
 
-interface SearchPostErrorAction {
+interface FetchPostErrorAction {
   type: PostsActionTypes.FETCH_POST_ERROR;
   payload: string;
 }
 
 export type Action =
   | FetchPostsAction
-  | SearchPostsSuccessAction
-  | SearchPostsErrorAction
+  | FetchPostsSuccessAction
+  | FetchPostsErrorAction
   | FetchPostAction
-  | SearchPostSuccessAction
-  | SearchPostErrorAction;
+  | FetchPostSuccessAction
+  | FetchPostErrorAction;

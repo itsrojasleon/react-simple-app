@@ -11,38 +11,32 @@ export interface Post {
 interface PostsState {
   loading: boolean;
   error: string | null;
-  data: Post[];
+  posts: Post[];
 }
 
-const INITIAL_STATE = {
-  loading: false,
-  error: null,
-  data: [],
-};
-
 const postsReducer = (
-  state: PostsState = INITIAL_STATE,
+  state: PostsState = {loading: false, error: null, posts: []},
   action: Action
 ): PostsState => {
   switch (action.type) {
     case PostsActionTypes.FETCH_POSTS:
-      return {loading: true, error: null, data: [...state.data]};
+      return {loading: true, error: null, posts: []};
     case PostsActionTypes.FETCH_POSTS_SUCCESS:
       return {
         loading: false,
         error: null,
-        data: [...state.data, ...action.payload],
+        posts: [...state.posts!, ...action.payload],
       };
     case PostsActionTypes.FETCH_POSTS_ERROR:
-      return {loading: false, error: action.payload, data: []};
+      return {loading: false, error: action.payload, posts: []};
 
-    // SOme coding here
-    case PostsActionTypes.FETCH_POST:
-      return {loading: true, error: null, data: []};
-    case PostsActionTypes.FETCH_POST_SUCCESS:
-      return {loading: false, error: null, data: action.payload};
-    case PostsActionTypes.FETCH_POST_ERROR:
-      return {loading: false, error: action.payload, data: []};
+    // Some coding here
+    // case PostsActionTypes.FETCH_POST:
+    //   return {loading: true, error: null, post: {}};
+    // case PostsActionTypes.FETCH_POST_SUCCESS:
+    //   return {loading: false, error: null, post: action.payload};
+    // case PostsActionTypes.FETCH_POST_ERROR:
+    //   return {loading: false, error: action.payload, post: []};
     default:
       return state;
   }

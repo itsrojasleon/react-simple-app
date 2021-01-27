@@ -18,7 +18,7 @@ export class Api {
       params: {id},
     });
 
-    return data;
+    return data[0];
   }
 
   static async getPostComments({id}: {id: number}) {
