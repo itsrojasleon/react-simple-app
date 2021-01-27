@@ -1,4 +1,4 @@
-import {ActionType} from '../action-types';
+import {PostsActionTypes} from '../action-types';
 import {Action} from '../actions';
 
 export interface Post {
@@ -25,11 +25,23 @@ const postsReducer = (
   action: Action
 ): PostsState => {
   switch (action.type) {
-    case ActionType.FETCH_POSTS:
+    case PostsActionTypes.FETCH_POSTS:
+      return {loading: true, error: null, data: [...state.data]};
+    case PostsActionTypes.FETCH_POSTS_SUCCESS:
+      return {
+        loading: false,
+        error: null,
+        data: [...state.data, ...action.payload],
+      };
+    case PostsActionTypes.FETCH_POSTS_ERROR:
+      return {loading: false, error: action.payload, data: []};
+
+    // SOme coding here
+    case PostsActionTypes.FETCH_POST:
       return {loading: true, error: null, data: []};
-    case ActionType.FETCH_POSTS_SUCCESS:
+    case PostsActionTypes.FETCH_POST_SUCCESS:
       return {loading: false, error: null, data: action.payload};
-    case ActionType.FETCH_POSTS_ERROR:
+    case PostsActionTypes.FETCH_POST_ERROR:
       return {loading: false, error: action.payload, data: []};
     default:
       return state;

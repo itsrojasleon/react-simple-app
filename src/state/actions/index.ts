@@ -1,21 +1,38 @@
-import {ActionType} from '../action-types';
+import {PostsActionTypes} from '../action-types';
 import {Post} from '../reducers/posts-reducer';
 
 interface FetchPostsAction {
-  type: ActionType.FETCH_POSTS;
+  type: PostsActionTypes.FETCH_POSTS;
 }
 
 interface SearchPostsSuccessAction {
-  type: ActionType.FETCH_POSTS_SUCCESS;
+  type: PostsActionTypes.FETCH_POSTS_SUCCESS;
   payload: Post[];
 }
 
 interface SearchPostsErrorAction {
-  type: ActionType.FETCH_POSTS_ERROR;
+  type: PostsActionTypes.FETCH_POSTS_ERROR;
+  payload: string;
+}
+
+interface FetchPostAction {
+  type: PostsActionTypes.FETCH_POST;
+}
+
+interface SearchPostSuccessAction {
+  type: PostsActionTypes.FETCH_POST_SUCCESS;
+  payload: Post[];
+}
+
+interface SearchPostErrorAction {
+  type: PostsActionTypes.FETCH_POST_ERROR;
   payload: string;
 }
 
 export type Action =
   | FetchPostsAction
   | SearchPostsSuccessAction
-  | SearchPostsErrorAction;
+  | SearchPostsErrorAction
+  | FetchPostAction
+  | SearchPostSuccessAction
+  | SearchPostErrorAction;
