@@ -1,5 +1,5 @@
 import { useTypedSelector } from '../hooks/use-typed-selector';
-import PostsDetails from './posts-details';
+import PostsDetails from './PostsDetails';
 import './posts-list.css';
 
 const PostsList: React.FC = () => {

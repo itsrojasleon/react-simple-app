@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Post } from '../state/reducers/posts-reducer';
-import Comment from './comment';
+import Comment from './Comment';
 import './posts-details.css';
 
 const PostsDetails: React.FC<Post> = ({

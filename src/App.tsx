@@ -2,12 +2,12 @@ import { Suspense, lazy } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { store } from './state';
-import Header from './components/header';
+import Header from './components/Header';
 import logo from './logo.svg';
 import './app.css';
 
-const Posts = lazy(() => import('./pages/posts'));
-const Post = lazy(() => import('./pages/post'));
+const Posts = lazy(() => import('./pages/Posts'));
+const Post = lazy(() => import('./pages/Post'));
 
 const App = () => {
   return (
