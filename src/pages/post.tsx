@@ -11,7 +11,7 @@ const Post: React.FC = () => {
 
   useEffect(() => {
     fetchPost({ id: parseInt(postId) });
-  }, []);
+  }, [postId]);
 
   if (loading) return <h3>Loading...</h3>;
   if (!post) return <h3>Post did not found!</h3>;
