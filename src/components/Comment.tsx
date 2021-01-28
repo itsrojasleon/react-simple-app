@@ -14,8 +14,3 @@ const Comment: React.FC<C> = ({ email, body, name }) => {
 };
 
 export default Comment;
-// postId: number;
-//   id: number;
-//   name: string;
-//   email: string;
-//   body: string;

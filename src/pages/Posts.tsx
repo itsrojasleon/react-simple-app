@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useActions } from '../hooks/use-actions';
-import PostsList from '../components/posts-list';
+import PostsList from '../components/PostsList';
 import Button from '../components/Button';
 
 const Posts: React.FC = () => {
