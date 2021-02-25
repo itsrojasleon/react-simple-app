@@ -26,7 +26,7 @@ const App = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Learn React
+              Hash Router
             </a>
           </header>
         </div>
