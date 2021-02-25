@@ -10,10 +10,9 @@ const Posts = lazy(() => import('./pages/Posts'));
 const Post = lazy(() => import('./pages/Post'));
 
 const App = () => {
-  console.log(process.env.PUBLIC_URL, process.env.NODE_ENV);
   return (
     <Provider store={store}>
-      <HashRouter basename="/">
+      <HashRouter>
         <Header />
         <div className="App">
           <header className="App-header">
