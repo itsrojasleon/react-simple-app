@@ -11,7 +11,6 @@ jobs:
         uses: actions/checkout@master
         with:
           persist-credentials: false
-      - name: Install and Build
       - run: npm install
       - run: CI='' npm run build
       - name: Deploy
