@@ -2,7 +2,7 @@ name: Build and Deploy a React App
 on:
   push:
     branches:
-      - 'gh'
+      - 'gh-hash-router'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
