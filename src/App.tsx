@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Provider } from 'react-redux';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { store } from './state';
 import Header from './components/Header';
 import logo from './logo.svg';
@@ -12,7 +12,7 @@ const Post = lazy(() => import('./pages/Post'));
 const App = () => {
   return (
     <Provider store={store}>
-      <HashRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Header />
         <div className="App">
           <header className="App-header">
@@ -38,7 +38,7 @@ const App = () => {
             </Switch>
           </Suspense>
         </main>
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
   );
 };
